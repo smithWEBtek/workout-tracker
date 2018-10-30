@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :muscles
   resources :days
   resources :exercises
   resources :workouts
