@@ -1,0 +1,18 @@
+<div align="">
+  <%= form_for @workout do |f| %>
+
+  <%= f.hidden_field :user_id %>
+
+    <div>
+      <p><%= f.label :name, "Workout Name" %></p>
+      <%= f.text_field :name %>
+      <p><%= f.label :description, "Describe Workout" %></p>
+      <%= f.text_field :description %>
+        </br><br>
+      <%= f.submit %>
+    </div>
+
+</div>
+
+
+<%end%>

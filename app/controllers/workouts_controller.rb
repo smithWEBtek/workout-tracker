@@ -1,30 +1,63 @@
 class WorkoutsController < ApplicationController
+  #before_action :set_workout
 
-  before_action :set_workout, only: [:show]
-
-  def index
-    @workouts = Workout.all
-    #render json: @workouts
-  end
-
-  def show
-    @workout = Workout.find(params[:id])
-  end
-
-  def new
-    @workout = Workout.new
-  end
-
-
-
-  private
-
-    def workout_params
-      params.require(:name).permit(:description, :day)
-    end
-
-    def set_workout
+    def show
       @workout = Workout.find(params[:id])
     end
+
+    def index
+      @workouts = Workout.all
+    end
+
+    def new
+      @workout = Workout.new(user_id: params[:user_id])
+    end
+
+    def create
+      respond_to do |format|
+        if logged_in?
+          @user = current_user
+          @workout = @user.workouts.build(workout_params)
+          @workout.save
+          session[:workout_id] =@workout.id
+            format.html { redirect_to @workout, notice: 'Workout was successfully created.' }
+        else
+            format.html { redirect_to root_url }
+            end
+      end
+    end
+
+
+    def edit
+
+    end
+
+    def update
+      if @workout.update(workout_params)
+         redirect_to @workout
+       else
+         render :edit
+       end
+    end
+
+    def destroy
+      @workout.delete
+    end
+
+
+
+private
+      def workout_params
+        params.require(:workout).permit(
+        :name,
+        :description,
+        :user_id
+        )
+      end
+
+      def set_workout
+        @workout = Workout.find(params[:id])
+      end
+
 
 end

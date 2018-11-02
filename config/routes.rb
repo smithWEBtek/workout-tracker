@@ -2,15 +2,17 @@ Rails.application.routes.draw do
 
   devise_for :users
   root "welcome#home"
-  resources :users, only: [:show, :edit, :update]
 
 
+  resources :users, only: [:show, :edit, :update] do
+    resources :workouts, only: [:show, :index, :new]
+  end
 
   resources :muscles
   resources :days
 
-  resources :workouts, only: [:index, :show, :create, :destroy, :update, :new] do
-    resources :exercises, only: [:index, :show]
+  resources :workouts do
+    resources :exercises
   end
 
 

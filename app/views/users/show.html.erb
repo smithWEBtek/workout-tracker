@@ -1,6 +1,6 @@
 <p><strong>Name: </strong><%= @user.email %></p>
 <p><strong>This week: </strong></p>
-<p><strong>Workouts: </strong><%= link_to "#{@user.workouts.count}", workouts_path %></p>
+<p><strong>Workouts: </strong><%= link_to "#{@user.workouts.count}", user_workouts_path(@user.workouts) %></p>
 <p><strong>Hours in the Gym: </strong></p>
 <p><strong>Exercises Completed: </strong></p>
 

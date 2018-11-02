@@ -1,0 +1,43 @@
+<div align="center">
+
+
+  <h3><%= @workout.name %></h3>
+
+</div>
+
+  <br></br>
+  <strong>Description:</strong>
+  <%= @workout.description %>
+
+  <br></br>
+  <strong>Exercises:</strong></br>
+    <% if @workout.exercises.all.count == 0 %>
+    This workout has no exercises,
+      <%= link_to "Add Exercises", new_workout_exercise_path(@workout) %>
+    <% else %>
+    <ol type ="1">
+      <% @workout.exercises.all.each do |exercise, i| %>
+          <li><%= link_to "#{exercise.name}", workout_exercise_path(exercise)%></li>
+
+        <% end %>
+    </ol>
+      <br>
+    <%= link_to "Add More Exercises", new_workout_exercise_path(@workout) %>
+    <% end %>
+
+  <br></br>
+  <div align="center">
+    <%= link_to "Edit Workout", edit_workout_path(@workout)%>
+    <br></br>
+    <%= link_to "Back", workouts_path %>
+  </div>
+
+
+  <div class="steps" align="">
+    <h4>STEPS</h4>
+    <ol>
+      <li>Add training days</li>
+      <li>Add workout sets to days</li>
+      <li>Set the repetitions for each set</li>
+    </ol>
+  </div>
