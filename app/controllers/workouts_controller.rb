@@ -12,7 +12,7 @@ class WorkoutsController < ApplicationController
   end
 
   def new
-    @workout = Workout.create(workout_params)
+    @workout = Workout.new
   end
 
 
