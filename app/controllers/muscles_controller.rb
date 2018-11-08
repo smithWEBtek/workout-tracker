@@ -1,5 +1,5 @@
 class MusclesController < ApplicationController
-    before_action :set_muscle
+    #before_action :set_muscle
 
     def index
       @muscles = Muscle.all

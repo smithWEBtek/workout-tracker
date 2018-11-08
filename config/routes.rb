@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root "welcome#home"
 
 
-  resources :users, only: [:show, :edit, :update] do
-    resources :workouts, only: [:show, :index, :new]
+  resources :users do
+    resources :workouts
   end
 
   resources :muscles

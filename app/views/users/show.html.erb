@@ -1,6 +1,9 @@
 <p><strong>Name: </strong><%= @user.email %></p>
 <p><strong>This week: </strong></p>
 <p><strong>Workouts: </strong><%= link_to "#{@user.workouts.count}", user_workouts_path(@user.workouts) %></p>
+<p>
+  <%= link_to "load workouts", user_workouts_path(@user.workouts), :class => "load_workouts" %>
+</p>
 <p><strong>Hours in the Gym: </strong></p>
 <p><strong>Exercises Completed: </strong></p>
 

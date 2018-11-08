@@ -18,7 +18,7 @@
     </ol>
 
     <% if current_user.workouts.count !=0 %>
-      <p>Add More <%= link_to "Workouts", new_workout_path %></p>
+      <p> <%= link_to "Add More Workouts", new_user_workout_path(@user)%></p>
     <%end%>
 
 </div>

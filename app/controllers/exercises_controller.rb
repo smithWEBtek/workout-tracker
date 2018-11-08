@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  before_action :set_workout
+  #before_action :set_workout
 
 
    def index
