@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+workouts = ["chest day", "shoulder blast", "ab crusher", "leg day", "arnold's back"]
+days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+
+workouts.each{|workout|
+  i=0
+  Workout.create(name: workout, day: days[i], description: "I am an awesome workout!")
+
+}
+
+
+
+#
+# fruits = ['Mango', 'Pineapple', 'Passion fruit', 'Dragonfruit']
+# fruits.each{|fruit| Fruit.create(name: fruit, description: "I am a delicious #{fruit}.")}
