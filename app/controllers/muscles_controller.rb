@@ -3,7 +3,10 @@ class MusclesController < ApplicationController
 
     def index
       @muscles = Muscle.all
-      #render json: @muscles
+      respond_to do |format|
+        format.html
+        format.json {render json: @muscles}
+      end
     end
 
     def show
@@ -16,7 +19,7 @@ class MusclesController < ApplicationController
 
 
 
-    private
+private
 
       def muscle_params
         params.require(:name)

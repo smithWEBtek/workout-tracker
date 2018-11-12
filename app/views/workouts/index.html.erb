@@ -2,6 +2,8 @@
 
 
 
+
+
 <div class="center">
 
   <div class="info">
@@ -12,6 +14,14 @@
       <% else %>
         <% current_user.workouts.all.each do |workout, i| %>
           <li><%= link_to "#{workout.name}", workout_path(workout) %></li>
+        
+
+              <div class="workout-exercises">
+                <ol>
+
+                </ol>
+              </div>
+
           </br>
           <% end %>
       <% end %>

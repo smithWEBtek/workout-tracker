@@ -3,12 +3,34 @@ require 'pry'
 class WorkoutsController < ApplicationController
   before_action :set_user
 
+    def exercises_data
+      respond_to do |format|
+        @workout = Workout.find(params[:id])
+        @exercises = @workout.exercises
+        render json: @exercises
+
+      end
+    end
+
     def show
-      @workout = Workout.find(params[:id])
+      @user = current_user
+      @workout = @user.workouts.find(params[:id])
+       #binding.pry
+
+      respond_to do |format|
+        format.html {render :show}
+        format.json {render json: @workout, status: 200}
+      end
     end
 
     def index
-      @workouts = Workout.all
+      @workouts = @user.workouts
+
+      respond_to do |format|
+        format.html
+        format.json {render json: @workouts}
+      end
+      #render 'workouts/index', :layout => false
     end
 
     def new
@@ -16,7 +38,6 @@ class WorkoutsController < ApplicationController
     end
 
     def create
-
         if logged_in?
           @user = current_user
           @workout = @user.workouts.build(workout_params)
@@ -29,7 +50,6 @@ class WorkoutsController < ApplicationController
         else
            redirect_to root_url
        end
-
     end
 
 
@@ -56,6 +76,7 @@ private
         params.require(:workout).permit(
         :name,
         :description,
+        :day,
         :user_id
         )
       end

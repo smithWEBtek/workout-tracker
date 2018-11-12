@@ -1,27 +1,35 @@
+require 'pry'
+
 class ExercisesController < ApplicationController
-  #before_action :set_workout
+  before_action :set_workout
+
 
 
    def index
-     if params[:workout_id]
-       @exercises = Workout.find(params[:workout_id]).exercises
-     else
-       @exercises = Exercise.all
-     end
-     #@exercises = Exercise.all
-     #render json: Exercise.all
-   end
+      @exercises = @workout.exercises
+      respond_to do |format|
+        format.html
+        format.json {render json: @exercises}
+      end
+
+      #render 'exercises/index', :layout => false
+    end
 
 
   def show
     @exercise = Exercise.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @exercise, status: 200}
+    end
     #render json: Exercise.find(params[:id])
   end
 
   def new
     @workout = Workout.find(params[:workout_id])
     @exercise = Exercise.new(workout_id: params[:workout_id], user_id: params[:user_id])
-    #@exercise = @workout.exercises.build(exercise_params)
+
   end
 
   def create

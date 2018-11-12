@@ -1,6 +1,6 @@
 class DaysController < ApplicationController
 
-  before_action :set_exercise, only: [:show]
+
 
   def index
     @days = Day.all
@@ -12,19 +12,15 @@ class DaysController < ApplicationController
   end
 
   def new
-    @day = Day.create(exercise_params)
+    @day = Day.create(day_params)
   end
 
 
 
   private
 
-    def exercise_params
+    def day_params
       params.require(:name)
-    end
-
-    def set_exercise
-      @day = Day.find(params[:id])
     end
 
 end
