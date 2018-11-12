@@ -23,7 +23,7 @@ gem 'jquery-rails'
 gem 'pry'
 gem 'pry-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+#gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 gem 'devise'
-gem 'jquery-turbolinks'
+#gem 'jquery-turbolinks'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

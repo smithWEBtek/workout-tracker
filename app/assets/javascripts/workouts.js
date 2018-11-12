@@ -7,9 +7,15 @@ $(function(){
 
 
   $("a.load_user_workouts").on('click', function(event){
-    //debugger
-    $.get(this.href).success(function(response){
-      $("div.workouts").html(response)
+
+    $.get(this.href).success(function(json){
+
+      var $ol = $("div.workouts ol")
+      $ol.html("")
+      json.forEach(function(json){
+        $ol.append("<li>" + json.name + "</li>");
+      })
+
     })
 
     event.preventDefault();
