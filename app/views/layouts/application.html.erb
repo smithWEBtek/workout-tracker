@@ -45,7 +45,7 @@
             <% if current_user %>
 
               <li><%= link_to "Dashboard", user_path(current_user) %></li>
-              <li><%= link_to "Workouts", user_workouts_path(current_user) %></li>
+              <li><%= link_to "Schedule", days_path %></li>
                <li><%= link_to "Log Out", '/users/sign_out', method: :delete %></li>
             <% else %>
               <li><%= link_to "Sign Up", '/users/sign_up' %></li>

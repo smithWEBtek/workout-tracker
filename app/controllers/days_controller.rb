@@ -1,5 +1,5 @@
 class DaysController < ApplicationController
-
+  before_action :set_user
 
 
   def index
@@ -20,7 +20,11 @@ class DaysController < ApplicationController
   private
 
     def day_params
-      params.require(:name)
+      params.require(:day).permit(:name, :user_id)
+    end
+
+    def set_user
+      @user = current_user
     end
 
 end

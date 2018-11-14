@@ -2,17 +2,12 @@
 
 </br>
 
-    <div class="steps" align="">
-      <h4>STEPS</h4>
-      <ol>
-        <li>Add training days</li>
-        <li>Add workout(s) to days</li>
-        <li>Add Exercises to workouts</li>
-      </ol>
-    </div>
 
-
-
+<div class="add-workouts">
+  <ol>
+    <%= render 'workouts/workouts' %>
+  </ol>
+</div>
 
 <p>
   <%= link_to "Workouts", user_workouts_path(@user), :class => "load_user_workouts" %>
@@ -26,10 +21,12 @@
 </div>
 
 
-<p><%= link_to "Add Workout", new_user_workout_path(@user) %></p>
+<%= render 'workouts/form' %>
+
+
+
 <br></br>
 
-<h4>Information</h4>
-<p><strong><%= link_to "User Data Log" %></strong></p>
+
 
 <p align="center"><%= link_to "Edit Your Account", edit_user_path %></p>

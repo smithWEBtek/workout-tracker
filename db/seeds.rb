@@ -8,7 +8,10 @@
 
 
 workouts = ["chest day", "shoulder blast", "ab crusher", "leg day", "arnold's back"]
-days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+
+
+days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+days.each{|day| Day.create(name: day)}
 
 workouts.each{|workout|
   i=0
@@ -19,7 +22,8 @@ workouts.each{|workout|
 
 muscles = ["Anterior deltoid", "Biceps brachii", "Biceps femoris", "Brachialis", "Gluteus maximus" ]
 
-muscles.each{|muscle| Muscle.create(name: muscle)}
+
+
 # Anterior deltoid
 # Biceps brachii
 # Biceps femoris

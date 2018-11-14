@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @workouts = @user.workouts
+    @workout = @user.workouts.build
   end
 
   def create

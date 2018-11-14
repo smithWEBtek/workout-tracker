@@ -1,9 +1,9 @@
 <h1>Days</h1>
 
-<p>
-  <%= link_to "load days", days_path(@days), :class => "load_days" %>
-</p>
+<% if @user.days.count == 0%>
+  <%= "You currently have no workout-days scheduled" %>
+<% end %>
 
-<div class="all-days">
-
-</div>
+<% @days.each do |day| %>
+  <%= day.name %>
+<% end %>

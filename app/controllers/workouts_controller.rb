@@ -36,6 +36,7 @@ class WorkoutsController < ApplicationController
     end
 
     def new
+      @user = current_user
       @workout = Workout.new(user_id: params[:user_id])
     end
 
@@ -45,7 +46,7 @@ class WorkoutsController < ApplicationController
           @workout = @user.workouts.build(workout_params)
             if @workout.save
             session[:workout_id] =@workout.id
-              render 'workouts/show', :layout => false
+              render "workouts/show", :layout => false
             else
               render 'users/show'
             end
