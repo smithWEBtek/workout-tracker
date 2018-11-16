@@ -6,6 +6,8 @@ class ExercisesController < ApplicationController
 
 
    def index
+     @exercise = @workout.exercises.new
+
       @exercises = @workout.exercises
       respond_to do |format|
         format.html
@@ -29,6 +31,7 @@ class ExercisesController < ApplicationController
   def new
     @workout = Workout.find(params[:workout_id])
     @exercise = Exercise.new(workout_id: params[:workout_id], user_id: params[:user_id])
+
 
   end
 

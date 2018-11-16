@@ -3,16 +3,13 @@
 </br>
 
 
-<div class="add-workouts">
-  <ol>
-    <%= render 'workouts/workouts' %>
-  </ol>
-</div>
-
 <p>
   <%= link_to "Workouts", user_workouts_path(@user), :class => "load_user_workouts" %>
 </p>
 
+<p>
+  <%= link_to "Go to Current Workouts" %>
+</p>
 
 <div class="workouts">
   <ol>

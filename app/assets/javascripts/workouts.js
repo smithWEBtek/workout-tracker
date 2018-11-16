@@ -13,6 +13,7 @@ $(function(){
       $ol.html("")
       json.forEach(function(json){
         $ol.append("<li>" + json.name + "</li>");
+
       })
 
     })
@@ -31,23 +32,26 @@ $(function(){
     //debugger;
 
 
-    data = {
-      'authenticity_token': $("input[name='authenticity_token']").val(),
-      'workout':{
-        'name':$("#workout_name").val(),
-        'description': $("#workout_description").val(),
-        'day': $("#workout_day").val()
-      }
-    }
+    // data = {
+    //   'authenticity_token': $("input[name='authenticity_token']").val(),
+    //   'workout':{
+    //     'name':$("#workout_name").val(),
+    //     'description': $("#workout_description").val(),
+    //     'day': $("#workout_day").val()
+    //   }
+    // }
+    data = $(this).serialize();
+
 
     $.ajax({
-      type: "POST",
+      type: ($("input[name='_method']").val() || this.method),
       url: this.action,
       data: data,
       success: function(response){
+
         $("#workout_name").val("");
         $("#workout_description").val("");
-        $("#workout_day").val();
+        $("#workout_day").val("");
 
         var $ol = $("div.add-workouts ol")
         $ol.append(response);

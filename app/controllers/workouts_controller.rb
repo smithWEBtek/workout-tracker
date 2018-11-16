@@ -14,6 +14,8 @@ class WorkoutsController < ApplicationController
 
     def show
       @user = current_user
+
+
       @workout = @user.workouts.find(params[:id])
        #binding.pry
 
@@ -21,18 +23,29 @@ class WorkoutsController < ApplicationController
         format.html {render :show}
         format.json {render json: @workout, status: 200}
       end
+
+      @exercises = @workout.exercises
+      @exercise = @workout.exercises.build
     end
 
     def index
       @workouts = @user.workouts
 
-      # respond_to do |format|
-      #   format.html
-      #   format.json {render json: @workouts}
-      # end
+      #  respond_to do |format|
+      #    format.html {render 'workouts/index', :layout => false}
+      #    format.json {render json: @workouts}
+      #  end
 
       render :json => @workouts
       #render 'workouts/index', :layout => false
+    end
+
+    def current_workouts
+      @workouts = @user.workouts
+       respond_to do |format|
+         format.html {render 'workouts/index', :layout => false}
+         format.json {render json: @workouts}
+       end
     end
 
     def new
@@ -46,7 +59,12 @@ class WorkoutsController < ApplicationController
           @workout = @user.workouts.build(workout_params)
             if @workout.save
             session[:workout_id] =@workout.id
-              render "workouts/show", :layout => false
+            respond_to do |format|
+              format.json {render json: @workout}
+              format.html {redirect_to workout_path(@workout)}
+
+            end
+              #render "workouts/show", :layout => false
             else
               render 'users/show'
             end

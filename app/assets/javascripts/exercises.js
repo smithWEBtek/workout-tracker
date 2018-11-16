@@ -10,12 +10,14 @@
 $(function(){
 
   //ADD EXERCISE
-  $("").on('submit', function(e){
-    alert('submitted exercise')
-
+  $("a.add_workout_exercise").on('click', function(e){
+    debugger;
 
     e.preventDefault();
   })
+
+
+
 
 
 

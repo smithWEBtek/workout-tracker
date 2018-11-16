@@ -1,20 +1,13 @@
 <h3>Workouts</h3>
 
-
-
-
-
 <div class="center">
-
   <div class="info">
-
     <ol type="1">
       <% if current_user.workouts.count == 0%>
         <p>You currently have no workouts, add <%= link_to "Workout", new_workout_path %></p>
       <% else %>
         <% current_user.workouts.all.each do |workout, i| %>
           <li><%= link_to "#{workout.name}", workout_path(workout) %></li>
-        
 
               <div class="workout-exercises">
                 <ol>
@@ -27,8 +20,12 @@
       <% end %>
     </ol>
 
-    <% if current_user.workouts.count !=0 %>
-      <p> <%= link_to "Add More Workouts", new_user_workout_path(@user)%></p>
-    <%end%>
+<!--
+    <div class="add-workouts">
+      <ol>
+        <%= render 'workouts/workouts' %>
+      </ol>
+    </div> -->
+
 
 </div>
