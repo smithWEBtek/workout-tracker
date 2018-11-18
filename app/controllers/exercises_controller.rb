@@ -6,16 +6,14 @@ class ExercisesController < ApplicationController
 
 
    def index
-     @exercise = @workout.exercises.new
-
-      @exercises = @workout.exercises
-      respond_to do |format|
-        format.html
-        format.json {render json: @exercises}
-      end
-
-      #render 'exercises/index', :layout => false
-    end
+     if params[:workout_id]
+       @exercises = Workout.find(params[:workout_id]).exercises
+     else
+       @exercises = Exercise.all
+     end
+     #@exercises = Exercise.all
+     render json: @exercises
+   end
 
 
   def show

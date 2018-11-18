@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+
+
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+	config.secret_key = 'a02cfd6282f5be8c0145122f82f624693e7b2cab53d93db5333299e045767c8356d7598811e7cf62baf9e14ce3f7aa9bbfa67eb30665808e3c41509ddbb88840'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
