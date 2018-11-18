@@ -1,65 +1,39 @@
-// # Place all the behaviors and hooks related to the matching controller here.
-// # All this logic will automatically be available in application.js.
-// # You can use CoffeeScript in this file: http://coffeescript.org/
-
-//Load workouts
-$(function(){
-
-  $("a.load_user_workouts").on('click', function(event){
-
-    $.get(this.href).success(function(json){
-
-      var $ol = $("div.workouts ol")
-      $ol.html("")
-      json.forEach(function(json){
-        $ol.append("<li>" + json.name + "</li>");
-
-      })
-
-    })
-
-    event.preventDefault();
-  })
-
+$(function () {
+	loadWorkouts();
+	newWorkout();
 })
 
+function loadWorkouts() {
+	$("a.load_user_workouts").on('click', function (event) {
+		$.get(this.href)
+			.then(res => function () {
+				let $ol = $("div.workouts ol")
+				$ol.html("")
+				res.forEach(function (json) {
+					$ol.append("<li>" + json.name + "</li>");
+				})
+			})
+		event.preventDefault();
+	})
+}
 
+function newWorkout() {
+	$("#new_workout").on("submit", function (e) {
+		data = $(this).serialize()
+		$.ajax({
+			type: 'post',
+			url: this.action,
+			data: data,
+			success: function (response) {
+				$("#workout_name").val("");
+				$("#workout_description").val("");
+				$("#workout_day").val("");
 
-//Add new workout
-$(function(){
-
-  $("#new_workout").on("submit", function(e){
-    //debugger;
-
-
-    // data = {
-    //   'authenticity_token': $("input[name='authenticity_token']").val(),
-    //   'workout':{
-    //     'name':$("#workout_name").val(),
-    //     'description': $("#workout_description").val(),
-    //     'day': $("#workout_day").val()
-    //   }
-    // }
-    data = $(this).serialize();
-
-
-    $.ajax({
-      type: ($("input[name='_method']").val() || this.method),
-      url: this.action,
-      data: data,
-      success: function(response){
-
-        $("#workout_name").val("");
-        $("#workout_description").val("");
-        $("#workout_day").val("");
-
-        var $ol = $("div.add-workouts ol")
-        $ol.append(response);
-      }
-    })
-
-
-
-      e.preventDefault();
-  })
-})
+				var $ol = $("div.add-workouts ol")
+				$ol.append(response);
+			}
+		})
+		e.preventDefault();
+		loadWorkouts();
+	})
+}
