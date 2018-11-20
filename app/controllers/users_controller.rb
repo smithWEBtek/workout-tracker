@@ -49,13 +49,13 @@ class UsersController < ApplicationController
 
 
 private
-    def set_user
-      @user = User.find(params[:id])
-    end
+     def set_user
+       @user = User.find(params[:id])
+     end
 
-    def current_user
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    end
+     def current_user
+       @current_user ||= User.find(session[:user_id]) if session[:user_id]
+     end
 
     def user_params
       params.require(:user).permit(:email, :user_name)

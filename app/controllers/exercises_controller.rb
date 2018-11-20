@@ -23,16 +23,15 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render json: @exercise, status: 200}
+      format.json {render json: @exercise}
     end
     #render json: Exercise.find(params[:id])
   end
 
   def new
-    @workout = Workout.find(params[:workout_id])
+    @user = current_user
+    @workout = @user.workouts.find(params[:id])
     @exercise = Exercise.new(workout_id: params[:workout_id], user_id: params[:user_id])
-
-
   end
 
   def create

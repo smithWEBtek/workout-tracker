@@ -10,7 +10,8 @@
 $(function(){
 
   //ADD EXERCISE
-  $("a.add_workout_exercise").on('click', function(e){
+  $("a.add_exercise").on('submit', function(e){
+    alert("clicked this")
     debugger;
 
     e.preventDefault();

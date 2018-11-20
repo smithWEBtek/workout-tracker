@@ -7,7 +7,7 @@
         <p>You currently have no workouts, add <%= link_to "Workout", new_workout_path %></p>
       <% else %>
         <% current_user.workouts.all.each do |workout, i| %>
-          <li><%= link_to "#{workout.name}", workout_path(workout) %></li>
+          <li><%= link_to "#{workout.name}", user_workout_path(@user, workout) %></li>
 
               <div class="workout-exercises">
                 <ol>

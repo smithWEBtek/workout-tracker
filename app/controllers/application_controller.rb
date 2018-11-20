@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
  protect_from_forgery with: :null_session
  # before_action :current_user
  # before_action :require_logged_in, except: [:new, :create, :home]
- # helper_method :current_user #:current_workout
+  helper_method :current_user #:current_workout
 
   def logged_in?
     !!current_user
@@ -16,5 +16,9 @@ class ApplicationController < ActionController::Base
   #  @current_user ||= User.find(session[:user_id]) if session[:user_id]
   # end
 
+  # def current_user
+  #   return unless session[:user_id]
+  #   @current_user ||= User.find(session[:user_id])
+  # end
 
 end

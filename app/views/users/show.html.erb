@@ -8,7 +8,7 @@
 </p>
 
 <p>
-  <%= link_to "Go to Current Workouts" %>
+  <%= link_to "Go to Current Workouts", user_path(@user), action: :current_workouts %>
 </p>
 
 <div class="workouts">
@@ -17,6 +17,11 @@
   </ol>
 </div>
 
+<div >
+  <% @user.workouts.all.each do |workout| %>
+    <%= link_to "#{workout.name}", user_workout_path(@user, workout) %>
+  <% end %>
+</div>
 
 <%= render 'workouts/form' %>
 

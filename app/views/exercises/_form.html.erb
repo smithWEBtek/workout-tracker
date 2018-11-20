@@ -1,7 +1,10 @@
+
+
 <div align="center">
 
 
   <%= form_for([@workout, @exercise]) do |e| %>
+  <!-- <%#= binding.pry %> -->
 
    <%= e.hidden_field :workout_id %>
    <%= e.hidden_field :user_id %>
@@ -32,7 +35,7 @@
       </br>
 
     <div>
-      <%= e.submit %>
+      <%= e.submit :class => "add_exercise" %>
     </div>
 
 <% end %>

@@ -2,16 +2,18 @@
 
 
 
-  <%= form_for([@user, @workout]) do |f| %>
 
-  <%= f.hidden_field :user_id %>
-  <p><%= f.label :name, "Workout Name" %></p>
-     <%= f.text_field :name %>
-  <p><%= f.label :day, "Workout Day" %></p>
-     <%= f.text_field :day %>
-  <p><%= f.label :description, "Describe Workout" %></p>
-     <%= f.text_field :description %>
-        </br><br>
-      <%= f.submit %>
+
+<%= form_for([@user, @workout]) do |f| %>
+
+ <%= f.hidden_field :user_id %>
+ <p id='workout_name_rails'><%= f.label :name, "Workout Name" %></p>
+    <%= f.text_field :name %>
+ <p id='workout_day_rails'><%= f.label :day, "Workout Day" %></p>
+    <%= f.text_field :day %>
+ <p id='workout_description_rails'><%= f.label :description, "Describe Workout" %></p>
+    <%= f.text_field :description %>
+       </br><br>
+     <%= f.submit name='Save New Workout' %>
 
 <%end%>

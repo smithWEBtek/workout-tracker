@@ -3,29 +3,20 @@ require 'pry'
 class WorkoutsController < ApplicationController
   before_action :set_user
 
-    def exercises_data
-      respond_to do |format|
-        @workout = Workout.find(params[:id])
-        @exercises = @workout.exercises
-        render json: @exercises
-
-      end
-    end
 
     def show
       @user = current_user
+      @workout = Workout.find(params[:id])
 
-
-      @workout = @user.workouts.find(params[:id])
-       #binding.pry
-
-      respond_to do |format|
-        format.html {render :show}
-        format.json {render json: @workout, status: 200}
-      end
 
       @exercises = @workout.exercises
       @exercise = @workout.exercises.build
+
+      respond_to do |format|
+        format.html {render :show}
+        format.json {render json: @workout}
+      end
+
     end
 
     def index
@@ -41,6 +32,7 @@ class WorkoutsController < ApplicationController
     end
 
     def current_workouts
+      @user = current_user
       @workouts = @user.workouts
        respond_to do |format|
          format.html {render 'workouts/index', :layout => false}
@@ -58,7 +50,7 @@ class WorkoutsController < ApplicationController
           @user = current_user
           @workout = @user.workouts.build(workout_params)
             if @workout.save
-            session[:workout_id] =@workout.id
+            session[:workout_id] = @workout.id
             respond_to do |format|
               format.json {render json: @workout}
               format.html {redirect_to workout_path(@workout)}
