@@ -28,40 +28,36 @@ $(function(){
 //Add new workout
 $(function(){
 
-  $("#new_workout").on("submit", function(e){
-    //debugger;
+    $("#new_workout").on("submit", function(e){
 
 
-    // data = {
-    //   'authenticity_token': $("input[name='authenticity_token']").val(),
-    //   'workout':{
-    //     'name':$("#workout_name").val(),
-    //     'description': $("#workout_description").val(),
-    //     'day': $("#workout_day").val()
-    //   }
-    // }
-    data = $(this).serialize();
+      url = this.action
+      data = {
+        'authenticity_token': $("input[name='authenticity_token']").val(),
+        'workout':{
+          'name':$("#workout_name").val(),
+          'day': $("#workout_day").val(),
+          'description': $("#workout_description").val()
+        }
+      };
 
+      $.ajax({
+        type: 'POST',
+        data: data,
+        url: url,
+        success: function(response){
+          $("#workout_name").val(""),
+          $("#workout_day").val(""),
+          $("#workout_description").val("")
 
-    $.ajax({
-      type: ($("input[name='_method']").val() || this.method),
-      url: this.action,
-      data: data,
-      success: function(response){
+          var $ol = $("div.user_workouts ol")
+          $ol.append(response)
 
-        $("#workout_name").val("");
-        $("#workout_description").val("");
-        $("#workout_day").val("");
+        }
+      });
 
-        var $ol = $("div.add-workouts ol")
-        $ol.append(response);
-      }
+      e.preventDefault();
     })
 
 
-
-
-
-      e.preventDefault();
-  })
-})
+});

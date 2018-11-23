@@ -17,7 +17,7 @@
   </ol>
 </div>
 
-<div >
+<div class="user_workouts">
   <ol>
   <% @user.workouts.all.each do |workout| %>
     <li><%= link_to "#{workout.name}", user_workout_path(@user, workout) %></li>

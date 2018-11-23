@@ -22,8 +22,15 @@ $(function(){
       data: data,
       url: url,
       success: function(response){
+        $("#exercise_name").val(""),
+        $("#exercise_sets").val(""),
+        $("#exercise_reps").val(""),
+        $("#exercise_rest").val("")
+
         var $ol = $("div.workout_exercises ol")
         $ol.append(response)
+
+
       }
     });
 

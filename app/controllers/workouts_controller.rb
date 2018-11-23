@@ -51,14 +51,9 @@ class WorkoutsController < ApplicationController
           @workout = @user.workouts.build(workout_params)
             if @workout.save
             session[:workout_id] = @workout.id
-            respond_to do |format|
-              format.json {render json: @workout}
-              format.html {redirect_to workout_path(@workout)}
-
-            end
-              #render "workouts/show", :layout => false
+              render "workouts/show", :layout => false
             else
-              render 'users/show'
+              redirect_to @user
             end
         else
            redirect_to root_url
