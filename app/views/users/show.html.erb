@@ -18,9 +18,11 @@
 </div>
 
 <div >
+  <ol>
   <% @user.workouts.all.each do |workout| %>
-    <%= link_to "#{workout.name}", user_workout_path(@user, workout) %>
+    <li><%= link_to "#{workout.name}", user_workout_path(@user, workout) %></li>
   <% end %>
+  </ol>
 </div>
 
 <%= render 'workouts/form' %>

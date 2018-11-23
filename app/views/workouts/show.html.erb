@@ -2,7 +2,7 @@
     <h3><%= @workout.name %></h3>
 
 </br>
-<p>
+<!-- <p>
     <% if @workout.exercises.count === 0 %>
       <%= "This workout has no exercises, add some below" %>
     <% else %>
@@ -12,11 +12,20 @@
         <% end %>
     </ol>
     <% end %>
-</p>
+</p> -->
+
+<div class="workout_exercises">
+  <ol>
+    <% @workout.exercises.all.each do |exercise| %>
+      <li><%= exercise.name %></li>
+      <% end %>
+  </ol>
+</div>
 
   <%= link_to "add exercise", new_workout_exercise_path(@workout), :class => "add_exercise"%>
 
 
-<div align="center"><h3><%= "Add Exercises to workout" %></h3>
-  <%= render 'exercises/form' %>
+<div align="center">
+  <h4>Add exercise to workout</h4>
+  <%= render 'exercises/form'%>
 </div>

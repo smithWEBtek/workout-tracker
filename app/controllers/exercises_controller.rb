@@ -30,7 +30,7 @@ class ExercisesController < ApplicationController
 
   def new
     @user = current_user
-    @workout = @user.workouts.find(params[:id])
+    @workout = @user.workouts.find(params[:workout_id])
     @exercise = Exercise.new(workout_id: params[:workout_id], user_id: params[:user_id])
   end
 
@@ -38,9 +38,9 @@ class ExercisesController < ApplicationController
     @workout = Workout.find(params[:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
       if @exercise.save
-        redirect_to @workout
+        render "exercises/show", :layout => false
       else
-        redirect_to workouts_path(@workout)
+        redirect_to @workout
       end
   end
 

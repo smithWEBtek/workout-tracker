@@ -3,69 +3,31 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-
-
-
-
 $(function(){
+  $("#new_exercise").on("submit", function(e){
+    url = this.action
 
-  //ADD EXERCISE
-  $("a.add_exercise").on('submit', function(e){
-    alert("clicked this")
-    debugger;
-
-    e.preventDefault();
-  })
-
-
-
-
-
-
-
-  //DELETE EXERCISE
-  $("a.remove-exercise").on('click', function(e){
+    data = {
+      'authenticity_token': $("input[name='authenticity_token']").val(),
+      'exercise':{
+        'name':$("#exercise_name").val(),
+        'sets': $("#exercise_sets").val(),
+        'reps': $("#exercise_reps").val(),
+        'rest': $("#exercise_rest").val()
+      }
+    };
 
     $.ajax({
-      method: 'DELETE',
-      url: 'exercises/api',
-    }).success(function(result){
-        alert("You deleted exercise")
+      type: 'POST',
+      data: data,
+      url: url,
+      success: function(response){
+        var $ol = $("div.workout_exercises ol")
+        $ol.append(response)
+      }
     });
+
 
     e.preventDefault();
   })
-
-
-  //LOAD EXERCISES
-
-  $("a.load_workout_exercises").on('click', function(event){
-    //debugger;
-
-    // $.ajax({
-    //   method: 'GET',
-    //   url: this.href,
-    // }).success(function(data){
-    //     $("div.exercises").html(data)
-    // });
-
-    $.get(this.href).success(function(response){
-      $("div.exercises").html(response)
-    })
-
-    event.preventDefault();
-  })
-
-
-
-
-})
-
-
-// $.ajax({
-//     url: '/script.cgi',
-//     type: 'DELETE',
-//     success: function(result) {
-//         // Do something with the result
-//     }
-// });
+});
