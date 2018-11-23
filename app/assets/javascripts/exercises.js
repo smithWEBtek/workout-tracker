@@ -7,20 +7,22 @@ $(function(){
   $("#new_exercise").on("submit", function(e){
     url = this.action
 
-    data = {
-      'authenticity_token': $("input[name='authenticity_token']").val(),
-      'exercise':{
-        'name':$("#exercise_name").val(),
-        'sets': $("#exercise_sets").val(),
-        'reps': $("#exercise_reps").val(),
-        'rest': $("#exercise_rest").val()
-      }
-    };
+    // data = {
+    //   'authenticity_token': $("input[name='authenticity_token']").val(),
+    //   'exercise':{
+    //     'name':$("#exercise_name").val(),
+    //     'sets': $("#exercise_sets").val(),
+    //     'reps': $("#exercise_reps").val(),
+    //     'rest': $("#exercise_rest").val()
+    //   }
+    // };
+
+    data = $(this).serialize();
 
     $.ajax({
-      type: 'POST',
+      type: ($("input[name='_method']").val() || this.type),
       data: data,
-      url: url,
+      url: this.action,
       success: function(response){
         $("#exercise_name").val(""),
         $("#exercise_sets").val(""),

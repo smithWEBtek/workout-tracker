@@ -32,19 +32,21 @@ $(function(){
 
 
       url = this.action
-      data = {
-        'authenticity_token': $("input[name='authenticity_token']").val(),
-        'workout':{
-          'name':$("#workout_name").val(),
-          'day': $("#workout_day").val(),
-          'description': $("#workout_description").val()
-        }
-      };
+      // data = {
+      //   'authenticity_token': $("input[name='authenticity_token']").val(),
+      //   'workout':{
+      //     'name':$("#workout_name").val(),
+      //     'day': $("#workout_day").val(),
+      //     'description': $("#workout_description").val()
+      //   }
+      // };
+
+      data = $(this).serialize();
 
       $.ajax({
-        type: 'POST',
+        type: ($("input[name='_method']").val() || this.type),
         data: data,
-        url: url,
+        url: this.action,
         success: function(response){
           $("#workout_name").val(""),
           $("#workout_day").val(""),
@@ -53,6 +55,7 @@ $(function(){
           var $ol = $("div.user_workouts ol")
           $ol.append(response)
 
+          debugger
         }
       });
 
