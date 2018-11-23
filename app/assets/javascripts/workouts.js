@@ -24,43 +24,43 @@ $(function(){
 })
 
 
-
-//Add new workout
-$(function(){
-
-    $("#new_workout").on("submit", function(e){
-
-
-      url = this.action
-      // data = {
-      //   'authenticity_token': $("input[name='authenticity_token']").val(),
-      //   'workout':{
-      //     'name':$("#workout_name").val(),
-      //     'day': $("#workout_day").val(),
-      //     'description': $("#workout_description").val()
-      //   }
-      // };
-
-      data = $(this).serialize();
-
-      $.ajax({
-        type: ($("input[name='_method']").val() || this.type),
-        data: data,
-        url: this.action,
-        success: function(response){
-          $("#workout_name").val(""),
-          $("#workout_day").val(""),
-          $("#workout_description").val("")
-
-          var $ol = $("div.user_workouts ol")
-          $ol.append(response)
-
-          debugger
-        }
-      });
-
-      e.preventDefault();
-    })
-
-
-});
+//
+// //Add new workout
+// $(function(){
+//
+//     $("#new_workout").on("submit", function(e){
+//
+//
+//       url = this.action
+//       // data = {
+//       //   'authenticity_token': $("input[name='authenticity_token']").val(),
+//       //   'workout':{
+//       //     'name':$("#workout_name").val(),
+//       //     'day': $("#workout_day").val(),
+//       //     'description': $("#workout_description").val()
+//       //   }
+//       // };
+//
+//       data = $(this).serialize();
+//
+//       $.ajax({
+//         type: ($("input[name='_method']").val() || this.type),
+//         data: data,
+//         url: this.action,
+//         success: function(response){
+//           $("#workout_name").val(""),
+//           $("#workout_day").val(""),
+//           $("#workout_description").val("")
+//
+//           var $ol = $("div.user_workouts ol")
+//           $ol.append(response)
+//
+//           debugger
+//         }
+//       });
+//
+//       e.preventDefault();
+//     })
+//
+//
+// });

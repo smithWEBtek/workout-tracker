@@ -4,7 +4,7 @@
 
 
 
-<%= form_for([@user, @workout]) do |f| %>
+<%= form_for([@user, @workout], :remote => true) do |f| %>
 
  <%= f.hidden_field :user_id %>
  <p id='workout_name_rails'><%= f.label :name, "Workout Name" %></p>

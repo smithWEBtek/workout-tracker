@@ -1,0 +1,6 @@
+$("#workout_name").val(""),
+$("#workout_day").val(""),
+$("#workout_description").val("")
+
+var $ol = $("div.user_workouts ol")
+$ol.append("<%=j(render('workouts/workout', :workout => @workout)) %>");

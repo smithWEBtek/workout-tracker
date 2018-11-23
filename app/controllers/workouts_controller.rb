@@ -51,7 +51,8 @@ class WorkoutsController < ApplicationController
           @workout = @user.workouts.build(workout_params)
             if @workout.save
             session[:workout_id] = @workout.id
-              render "workouts/show", :layout => false
+              # render "workouts/show", :layout => false
+              render "create.js", :layout => false
             else
               redirect_to @user
             end
