@@ -3,11 +3,11 @@
 <div align="center">
 
 
-  <%= form_for([@workout, @exercise]) do |e| %>
+<%= form_for([@workout, @exercise]) do |e| %>
   <!-- <%#= binding.pry %> -->
-
-   <%= e.hidden_field :workout_id %>
-   <%= e.hidden_field :user_id %>
+	
+	<%= e.hidden_field :authenticity_token, value: form_authenticity_token %>
+	<%= e.hidden_field :workout_id %>
 
     <div>
       <%= e.label :name, "Exercise Name" %>

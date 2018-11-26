@@ -1,8 +1,8 @@
 require 'pry'
 
 class ExercisesController < ApplicationController
+	skip_before_action :verify_authenticity_token
   before_action :set_workout
-
 
 
    def index
@@ -34,7 +34,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(workout_id: params[:workout_id], user_id: params[:user_id])
   end
 
-  def create
+	def create
     @workout = Workout.find(params[:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
       if @exercise.save
@@ -79,7 +79,8 @@ private
       :muscles,
       :sets,
       :reps,
-      :rest)
+			:rest,
+			:workout_id)
     end
 
 end
