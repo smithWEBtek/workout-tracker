@@ -55,7 +55,7 @@ $(function(){
 //           var $ol = $("div.user_workouts ol")
 //           $ol.append(response)
 //
-//           debugger
+//
 //         }
 //       });
 //

@@ -38,7 +38,8 @@ class ExercisesController < ApplicationController
     @workout = Workout.find(params[:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
       if @exercise.save
-        render "exercises/show", :layout => false
+        #render "exercises/show", :layout => false
+        render "create.js", :layout => false
       else
         redirect_to @workout
       end

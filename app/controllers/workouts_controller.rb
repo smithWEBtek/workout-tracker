@@ -22,12 +22,11 @@ class WorkoutsController < ApplicationController
     def index
       @workouts = @user.workouts
 
-      #  respond_to do |format|
-      #    format.html {render 'workouts/index', :layout => false}
-      #    format.json {render json: @workouts}
-      #  end
-
-      render :json => @workouts
+       respond_to do |format|
+         format.json {render json: @workouts}
+         format.html {render 'workouts/index'}
+       end
+      #render :json => @workouts
       #render 'workouts/index', :layout => false
     end
 
