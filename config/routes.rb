@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   root "welcome#home"
-  get '/users/:id/current_workouts', to: "workouts#current_workouts", as: 'current_workouts'
-
+  devise_for :users
+  #devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
 
   resources :users do
     resources :workouts do

@@ -38,32 +38,11 @@ class ExercisesController < ApplicationController
     @workout = Workout.find(params[:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
       if @exercise.save
-        #render "exercises/show", :layout => false
-        render "create.js", :layout => false
+        render "exercises/show", :layout => false
       else
         redirect_to @workout
       end
   end
-
-  # def create
-  #   respond_to do |format|
-  #     if current_workout.id == @workout.id
-  #       @exercise = current_workout.exercises.build(exercise_params)
-  #       binding.pry
-  #       @exercise.save
-  #
-  #       session[:exercise_id] = @exercise.id
-  #       format.html { redirect_to current_workout }
-  #     else
-  #       format.html{ redirect_to workouts_path }
-  #     end
-  #   end
-  # end
-
-  # def create
-  #   exercise = Exercise.create(exercise_params)
-  #   render json: exercise
-  # end
 
 
   def edit

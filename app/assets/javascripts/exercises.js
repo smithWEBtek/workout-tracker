@@ -5,6 +5,7 @@
 
 $(function(){
   $("#new_exercise").on("submit", function(e){
+    alert("submit")
     url = this.action
 
     // data = {
@@ -28,6 +29,8 @@ $(function(){
         $("#exercise_sets").val(""),
         $("#exercise_reps").val(""),
         $("#exercise_rest").val("")
+
+        debugger
 
         var $ol = $("div.workout_exercises ol")
         $ol.append(response)
